@@ -7,4 +7,4 @@ Adds a couple of functions under a menu called *Custom*:
 To use this, put it in your ~/.Natron directory
 ** AddMix.py
 A merge node useful for transluscent, light emitting subjects (compositing flames, sunbeams, glowing lights, white smoke etc).
-This is a Pyplug and can go in with your other plugins
+This is a Pyplug and to install it you place it in your OFX Plugin directory
