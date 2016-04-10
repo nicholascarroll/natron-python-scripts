@@ -1,0 +1,8 @@
+** initGui.py
+Adds a couple of functions under a menu called *Custom*:
+- shortcut key to change viewer B side input
+- automatically generate the combined pass reconstruction for Blender Cycles render output
+To use this, put it in your ~/.Natron directory
+** AddMix.py
+A merge node useful for transluscent, light emitting subjects (compositing flames, sunbeams, glowing lights, white smoke etc).
+This is a Pyplug and can go in with your other plugins
