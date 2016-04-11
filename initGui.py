@@ -1,4 +1,6 @@
-# http://github.com/nicholascarroll/NatronScripts/initGui.py
+# http://github.com/nicholascarroll/natron-python-scripts/initGui.py
+from __future__ import (absolute_import, division,
+                    print_function, unicode_literals)
 from NatronGui import *
 from collections import namedtuple
 
@@ -180,7 +182,7 @@ def reconstruct_combined(renderer):
     final_merge.getParam('AChannelsA').setValue(False)
     x,y = last_node.getPosition() 
     final_merge.setPosition(x+300,y+50)
-    for z in zip([0,1,3,4,5,6,7,8,9],leaf_list):
+    for z in zip([0,1,3,4,5,6,7,8,9],leaf_list):#TODO refactor
         dot = app1.createNode('fr.inria.built-in.Dot')
         x,y = z[1].getPosition()
         dot.setPosition(final_merge.getPosition()[0]+30,y+10)
