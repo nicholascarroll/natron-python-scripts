@@ -1,6 +1,6 @@
 # http://github.com/nicholascarroll/natron-python-scripts/initGui.py
 from __future__ import (absolute_import, division,
-                    print_function, unicode_literals)
+                        print_function, unicode_literals)
 from NatronGui import *
 from collections import namedtuple
 
@@ -39,6 +39,7 @@ def append_shuffle(parent,layer, label):
     s.setLabel(label)
     s.getParam('outputChannelsChoice').setValue('Color.RGBA')
     params = ('outputRChoice','outputGChoice','outputBChoice','outputAChoice')
+    # TODO maybe set alpha to CYCLES_COMBINED_LAYER for all
     for i in params:
         s.getParam(i).setValue('0')
     for i in range(layer.getNumComponents()):    
@@ -173,6 +174,7 @@ def reconstruct_combined(renderer):
             Environment = append_shuffle(last_node, layer, 'Environment')
             x,y = last_node.getPosition()
             Environment.setPosition(x,y+50)
+            Environment.getParam('disableNode').setValue(True)
             last_node = Environment
             leaf_list.append(Environment)
 
@@ -182,7 +184,7 @@ def reconstruct_combined(renderer):
     final_merge.getParam('AChannelsA').setValue(False)
     x,y = last_node.getPosition() 
     final_merge.setPosition(x+300,y+50)
-    for z in zip([0,1,3,4,5,6,7,8,9],leaf_list):#TODO refactor
+    for z in zip([0,1,3,4,5,6,7,8,9],leaf_list):# TODO refactor
         dot = app1.createNode('fr.inria.built-in.Dot')
         x,y = z[1].getPosition()
         dot.setPosition(final_merge.getPosition()[0]+30,y+10)
