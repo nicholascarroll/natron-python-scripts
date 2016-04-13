@@ -1,5 +1,5 @@
 ** initGui.py
-This includes a fuctino to automatically reconstruct the combined pass for Blender Cycles render output. To install this, put it in your ~/.Natron directory. This will put the function under menu called *Custom*.
+This has a fuction to automatically reconstruct the combined pass for Blender Cycles render output. To install this, put it in your ~/.Natron directory. This will put the function under menu called *Custom*.
 #+CAPTION: The custom menu
 [[natron-custom-functions.png]]
 
