@@ -1,6 +1,4 @@
 # http://github.com/nicholascarroll/natron-python-scripts/initGui.py
-from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
 from NatronGui import *
 from collections import namedtuple
 
