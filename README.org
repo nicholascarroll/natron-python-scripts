@@ -2,7 +2,8 @@
 This has a fuction to automatically reconstruct the combined pass for Blender Cycles render output. To install this, put initGui.py in your ~/.Natron directory. This will put the function under menu called *Custom*.
 #+CAPTION: The custom menu
 [[natron-custom-functions.png]]
-*** TODO Need to add support for multiple render layers
+
+TODO Need to add support for multiple render layers
 
 ** AddMix.py
 A merge node that outputs Aa + B(1-a) (unpremultiplied over) with curves so you can separately adjust the Aa and (1-a) values. Good for compositing transluscent light sources like flames, sunbeams, white smoke, steam etc. This is a Pyplug and to install it you place it in your OFX Plugin directory.
