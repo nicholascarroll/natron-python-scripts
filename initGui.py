@@ -192,36 +192,5 @@ def reconstruct_combined(renderer):
     return
 
 NatronGui.natron.addMenuCommand(
-'Custom/Connect Viewer B Side/to Input 1','set_b_side(1)',
-    QtCore.Qt.Key.Key_1,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 2','set_b_side(2)',
-    QtCore.Qt.Key.Key_2,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 3','set_b_side(3)',
-    QtCore.Qt.Key.Key_3,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 4','set_b_side(4)',
-    QtCore.Qt.Key.Key_4,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 5','set_b_side(5)',
-    QtCore.Qt.Key.Key_5,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 6','set_b_side(6)',
-    QtCore.Qt.Key.Key_6,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 7','set_b_side(7)',
-    QtCore.Qt.Key.Key_7,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 8','set_b_side(8)',
-    QtCore.Qt.Key.Key_8,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 9','set_b_side(9)',
-    QtCore.Qt.Key.Key_9,QtCore.Qt.KeyboardModifier.ShiftModifier)
-NatronGui.natron.addMenuCommand(
-    'Custom/Connect Viewer B Side/to Input 10','set_b_side(10)',
-    QtCore.Qt.Key.Key_0,QtCore.Qt.KeyboardModifier.ShiftModifier)
-
-NatronGui.natron.addMenuCommand(
     'Custom/Reconstruct Combined Pass/Blender Cycles',
     'reconstruct_combined("CYCLES")')
