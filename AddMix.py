@@ -16,7 +16,7 @@ except ImportError:
     pass
 
 def getPluginID():
-    return "AddMix"
+    return "com.casanico.AddMix"
 
 def getLabel():
     return "AddMix"
