@@ -3,6 +3,9 @@ A toolset Pyplug node that reconstructs the combined pass for Cycles render outp
 
 TODO Need to add support for multiple render layers
 
+#+CAPTION: ReconstructCycles in action
+[[reconstruct-cycles.png]]
+
 ** AddMix.py
 A merge node that outputs Aa + B(1-a) (unpremultiplied over) with curves so you can separately adjust the Aa and (1-a) values. Good for compositing transluscent light sources like flames, sunbeams, white smoke, steam etc. This is a Pyplug group node and to install it you place it in your OFX Plugin directory. You will also need my [[https://github.com/nicholascarroll/openfx-misc/releases][ChannelMath]] node installed.
 #+CAPTION: AddMix in action
