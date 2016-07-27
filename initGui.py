@@ -19,11 +19,11 @@
 # - Offset (the frame number of the In frame on the AAF timeline)
 # - In (the starting frame number)
 # - Out (the ending frame number)
-# - Natron Project Filename
-# - Read Node (scriptname)
 # - Read File (this needs to be the full path, but just show the last n chars)
-# - Write Node (scriptname)
+# - Read Node (scriptname)
 # - Write File (this needs to be the full path, but just show the last n chars)
+# - Write Node (scriptname)
+# - Natron Project Filename
 # - Notes (free text entry)
 
 # All this data has to be kept somewhere and maybe the best is to keep it in the AAF
@@ -31,13 +31,58 @@
 # and then a button to write all this back to the AAF. This is an update button
 # because you can jusk keep pressing it and overwriting the AAF.
 
-#(requires Pyaaf: http://markreidvfx.github.io/pyaaf)
-# import aaf 
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+#(install Pyaaf from: http://markreidvfx.github.io/pyaaf)
+import aaf
+import aaf.component
 import operator
 from PySide.QtGui import *
 from PySide.QtCore import *
 #To import the variable "natron":
 from NatronGui import *
+
+
+def get_video_tracks(mob):
+    tracks = []
+    
+    for slot in mob.slots():
+
+        if slot.media_kind == "DataDef_Picture": 
+            segment = slot.segment
+            
+            if isinstance(segment, aaf.component.NestedScope):               
+                for nested_segment in segment.segments():                   
+                    if isinstance(nested_segment,  aaf.component.Sequence):
+                        tracks.append(list(nested_segment.components()))
+                        
+            elif isinstance(segment, aaf.component.Sequence):
+                tracks.append(list(segment.components()))
+                
+            elif isinstance(segment, aaf.component.SourceClip):
+                tracks.append([segment])
+
+    return tracks
+
+def load_data(aaf_filename):
+    f = aaf.open(aaf_filename, "r")
+
+    # get the main composition
+    main_composition = f.storage.toplevel_mobs()[0]
+
+    # print the name of the composition.
+    print (main_composition.name)
+
+    # AAFObjects have properties that can be accessed like a dictionary
+    # print out the creation time
+    print (main_composition['CreationTime'].value)
+
+    video_tracks = get_video_tracks(main_composition)
+
+    for source_clip in video_tracks[0]:
+        print (source_clip['SourceID'].value)
+        print (source_clip.slot_id)
+        # slotID - the track identifier, is valuable because it means we can just deal with clips. 
 
 #The Shotlist panel
 class Shotlist(NatronGui.PyPanel):
@@ -117,6 +162,8 @@ class Shotlist(NatronGui.PyPanel):
         self.layout().addWidget(fileContainer)
         self.layout().addWidget(table_view)
 
+        load_data("/Users/nick/White-Tipped-Shark_m4v (Edit).aaf")
+
 
         #Make signal/slot connections
         self.button.clicked.connect(self.onButtonClicked)
@@ -129,7 +176,6 @@ class Shotlist(NatronGui.PyPanel):
 
     # We override the restore(data) function and restore the current image
     #def restore(self,data):
-
     #    self.locationEdit.setText(data)
     #    self.label.setPixmap(QPixmap(data))
 
@@ -162,16 +208,13 @@ class Table(QAbstractTableModel):
         self.emit(SIGNAL("layoutChanged()"))
 
 # dummy data for prototype
-header = ['Timecode', ' Offset', ' In', ' Out', ' Natron Project Filename', ' Read Node', ' Read File',
-          ' Write Node', ' Write File', 'Notes']
+header = ['Timecode', ' Offset', ' In', ' Out',  ' Read File', ' Read Node',  ' Write File', ' Write Node',
+          ' Natron Project Filename', 'Notes']
 
 data_list = [
-('00:01:25+09', 2040, 200, 247, '/vids/projectx/shot1.ntp', 'Read1', '/vids/projectx/1_0062.####.dng',
- 'Write1', '/vids/projectx/1_0062.mov', 'WIP'),
-('00:01:27+09', 2047, 1102, 1151, '/vids/projectx/shot2.ntp', 'Read1', '/vids/projectx/1_0063.####.dng',
- 'Write1', '/vids/projectx/1_0063.mov', 'DONE'),
-('00:01:34+10', 2266, 500, 693, '/vids/projectx/shot1.ntp', 'Read1', '/vids/projectx/1_0062.####.dng',
- 'Write1', '/vids/projectx/1_0062.mov', 'WIP')
+('00:01:25+09', 2040, 200, 247,  '/vids/projectx/1_0062.####.dng'),
+('00:01:27+09', 2047, 1102, 1151, '/vids/projectx/1_0063.####.dng'),
+('00:01:34+10', 2266, 500, 693, '/vids/projectx/1_0062.####.dng')
 ]
 #To be called to create a new icon viewer panel:
 #Note that *app* should be defined. Generally when called from onProjectCreatedCallback
