@@ -9,8 +9,6 @@
 # - create/open Natron project files 
 # - export the list to a new track in the same AAF file
 
-# The first field is the AAF filename and that gets read in.
-
 # This will be a sortable table. Each row being one shot with one reader and one writer.
 # A shot is a single frame range from a single source media file
 
