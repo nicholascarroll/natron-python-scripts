@@ -10,7 +10,7 @@
 # - export the list to a new track in the same AAF file
 
 # This will be a sortable table. Each row being one shot with one reader and one writer.
-# A shot is a single frame range from a single source media file
+# A shot is defined as being a single frame range from a single source media file
 
 # The columns will be:
 # - Timecode (the timecode on the AAF timeline)
