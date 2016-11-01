@@ -22,7 +22,7 @@ def frame2timecode(frame, fps):
                 f=int(round(frame%fps)))
 
 def create_timeread(): 
-    """Creates a read node that uses timecodes instead of frame numbers.
+    """Makes the read node use timecodes instead of frame numbers.
     """
     # VALIDATION
     selectedNodes = app1.getSelectedNodes()
