@@ -2,25 +2,7 @@ from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 from NatronGui import *
 
-
-def timecode2frame(timecode, fps):
-    s = timecode.split('+')
-    hours = int(s[0].split(':')[0])
-    minutes = int(s[0].split(':')[1])
-    seconds = int(s[0].split(':')[2])
-    frames = int(s[1])
-    frames += (hours*3600 + minutes*60 + seconds) * fps
-
-    return frames
-
-def frame2timecode(frame, fps):
-    seconds = frame/fps
-    
-    return '{h:02d}:{m:02d}:{s:02d}+{f:02d}'\
-        .format(h=int(seconds/3600),
-                m=int(seconds/60%60),
-                s=int(seconds%60),
-                f=int(round(frame%fps)))
+# timecode2frame and frame2timecode are in init.py
 
 def create_timeread(): 
     """Creates a read node that uses timecodes instead of frame numbers.
