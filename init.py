@@ -1,7 +1,9 @@
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 
+
 def timecode2frame(timecode, fps):
+    # TODO if last separator is '.' or ';' it means dropframe
     hours = int(timecode.split(':')[0])
     minutes = int(timecode.split(':')[1])
     seconds = int(timecode.split(':')[2])
@@ -11,6 +13,7 @@ def timecode2frame(timecode, fps):
     return frames
 
 def frame2timecode(frame, fps):
+    # TODO if framerate == 29.97 use dropframes 
     seconds = frame/fps
     
     return '{h:02d}:{m:02d}:{s:02d}:{f:02d}'\
